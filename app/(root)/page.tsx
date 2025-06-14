@@ -1,12 +1,23 @@
 import Hello from "../components/hello"
 
-export default function Home() {
+export default async function Home() {
+   const res = await fetch('https://jsonplaceholder.typicode.com/albums')
+    if(!res.ok) throw new Error('failed to fetch data')
+    const albums = await res.json()
   console.log('what am i? ')
   console.log('what is Ai? ')
   return (
     <>
     <h1 className=" text-blue-500 text-3xl">Welcome to Next js</h1>
     <Hello/>
+    <div>
+            {albums.map((album: {id:number, title:string})=>(
+                <div key={album.id}>
+                    <h1 className='text-2xl'>{album.title}</h1>
+                    <p className='text-2xl'>{album.id}</p>
+                </div>
+            ))}
+        </div>
     </>
   )
 }
