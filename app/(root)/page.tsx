@@ -1,9 +1,24 @@
 import Hello from "../components/hello"
 
-export default async function Home() {
-   const res = await fetch('https://jsonplaceholder.typicode.com/albums')
-    if(!res.ok) throw new Error('failed to fetch data')
-    const albums = await res.json()
+export default async function Home() { 
+  //   const [albums, setAlbum]= useState([])
+  // useEffect(()=>{
+  //  const fetchAlbum  = async ()=>{
+  //   try{
+  //     const res = await fetch('https://jsonplaceholder.typicode.com/albums')
+  //     const data = await res.json()
+  //     setAlbum(data)
+  //   }
+  //   catch(error){
+  //       console.log('Error fetching data:', error)
+  //   }
+  //  };
+  //  fetchAlbum();
+  // },[])
+
+  const res = await fetch('https://jsonplaceholder.typicode.com/albums')
+  const albums = await res.json()
+  
   console.log('what am i? ')
   console.log('what is Ai? ')
   return (
